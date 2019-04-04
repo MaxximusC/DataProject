@@ -11,7 +11,7 @@ import java.util.*;
 import static java.lang.System.*;
 ArrayList<Visual> vis = new ArrayList(); // List of all of the different circles
 boolean start = true; // On-off switch for the scrolling
-int time = 0; // Keeps track of frames gone by since run started
+int time = 1; // Keeps track of frames gone by since run started
 
 void setup() {
   size(1200, 900);
@@ -35,8 +35,10 @@ void setup() {
     //run.printMap();
     //out.println(keys);
   }
+  int spaceOut = 0; //How far out new circles must bve put
   for (String s : keys) {
-    vis.add(new Visual(s, run.getFirst(s), run.getSecond(s), run.getThird(s), 255));
+    vis.add(new Visual(s, run.getFirst(s), run.getSecond(s), run.getThird(s), 255, spaceOut + 20 + (parseInt(run.getFirst(s))/500), 400));
+    spaceOut += 20 + (parseInt(run.getFirst(s))/500);
     out.println(s + " equals " + run.getFirst(s) + " " + run.getSecond(s) + " " + run.getThird(s));
   }
   /*for (String key : run.dataList.keySet()){
@@ -47,17 +49,18 @@ void setup() {
 
 void draw() {
   background(0);
-  time++;
+  //time++;
   if (start == true) {
     for (int i = 0; i < vis.size(); i++) {
-      vis.get(i).display(i * 100, 400);
+      vis.get(i).display(0);
     }
-    //vis.get(1).display(1 * 10, 1 * 10);
     out.print(vis.size());
+    out.println(vis.get(1).xpos + " " + vis.get(1).ypos);
+    out.println(vis.get(2).xpos + " " + vis.get(2).ypos);
     start = false;
   }
   for (int i = 0; i < vis.size(); i++) {
-      vis.get(i).display((i * 100) - time, 400);
-      //vis.get(1).display(1 * 100 - time, 1 * 400);
+      vis.get(i).display(time);
+      vis.get(i).checkMouse();
     }
 }
