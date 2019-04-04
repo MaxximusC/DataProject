@@ -1,0 +1,9 @@
+void showInfo(){
+  
+  textSize(32);
+  fill(255);
+  rect(0,75,1200,200);
+  fill(0, 102, 153);
+  text("Program: "+name+" Number of Grads: "+grads+" Number of Grads employed: "+employed+" Number of grads unemployed: "+unemployed, 50, 120); 
+  
+  }
