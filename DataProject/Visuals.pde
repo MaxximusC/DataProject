@@ -18,10 +18,9 @@ class Visual {
   }
 
   void checkMouse() { // Checks to see if the mouse is hovering over this object
-    if (mouseX > xpos - ((parseInt(grads)/500)/2) && mouseX < xpos + ((parseInt(grads)/500)/2)){
-      if (mouseY > ypos - 200 && mouseY < ypos + 200){
-        out.println(name);
-      }
+    if (mouseX > xpos - ((parseInt(grads)/500)/2) && mouseX < xpos + ((parseInt(grads)/500)/2) && mouseY > ypos - 200 && mouseY < ypos + 200){
+        out.println(name);   
+        showInfo();
     }
   }
 
@@ -31,7 +30,7 @@ class Visual {
     fill(255);
     rect(0, 75, 1200, 200);
     fill(0, 102, 153);
-    text("Program: "+name+" Number of Grads: "+grads+" Number of Grads employed: "+employed+" Number of grads unemployed: "+unemployed, 50, 120);
+    text("Major: "+name+" \nNumber of Grads: "+grads+" \nNumber of Grads employed: "+employed+" \nNumber of grads unemployed: "+unemployed, 50, 120);
   }
 
   void display(int timer) {
